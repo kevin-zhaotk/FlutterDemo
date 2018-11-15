@@ -1,0 +1,130 @@
+import 'package:flutter/material.dart';
+
+import 'navigate/PageRouteSecondWidget.dart';
+import 'FirstLayer/BikeList.dart';
+import 'FirstLayer/WidgetsDemo.dart';
+import 'style/KZTextStyle.dart';
+import 'stack/StackDemoPage.dart';
+import 'list/ListViewDemo.dart';
+
+class PageViewNavigator extends StatefulWidget {
+
+  @override
+    State<StatefulWidget> createState() {
+      return new _PageViewNavigatorState();
+    }
+}
+
+
+class _PageViewNavigatorState extends State<PageViewNavigator> {
+
+  var _currentIndex = 0;
+  var _pageController = new PageController(initialPage: 0);
+
+  @override
+    Widget build(BuildContext context) {
+      return new Scaffold(
+        appBar: new AppBar(
+         title: new Text("Kevin`s Home"),
+         elevation: 1.0,
+          backgroundColor: Colors.blue,
+        ),
+       drawer: new Text("my Drawer", textDirection:  TextDirection.rtl,),
+        floatingActionButton: new RaisedButton( child: new Text("RaisedBtn"), onPressed: _onRaisedPressed,),
+        body: new PageView.builder(
+         itemBuilder: (BuildContext context, int index) {
+           switch(index) {
+             case 0:
+                return new Center(
+                 child: new Column(
+                   children:[
+                     new Text("Run"),
+                     new IconButton( icon: new Icon(Icons.directions_run), onPressed: onGoSecond,),
+                     new FlatButton( child: new Text("Stack Demo", style: KZTextStyle.normalBtn,), onPressed: _goStackDemo,),
+                     new FlatButton( child: new Text("ListView", style: KZTextStyle.normalBtn,), 
+                          onPressed: (){
+                            Navigator.of(context).push( new MaterialPageRoute(
+                              builder: (BuildContext context) { return new ListViewDemo(); }
+                            ));
+                          },)
+                   ]
+                 ),
+                );
+             break;
+             case 1:
+                return new BikeList();
+                break;
+            case 2:
+                return new WidgetsDemo();
+                break;
+           }
+         },
+         controller: _pageController,
+         onPageChanged: _onPageChanged,
+         itemCount: 3,
+        ),
+        bottomNavigationBar: new BottomNavigationBar(
+          items: [
+            new BottomNavigationBarItem(
+              icon: new Icon(Icons.directions_run),
+              title: new Text("Run"),
+              
+            ),
+            new BottomNavigationBarItem(
+              icon: new Icon(Icons.directions_bike),
+              title: new Text("Bike"),
+            ),
+            new BottomNavigationBarItem(
+              icon: new Icon(Icons.directions_car),
+              title: new Text("Drive"),
+              
+            ),
+            
+          ],
+          onTap: _onTap,
+          currentIndex: _currentIndex,
+        ),
+      );
+    }
+
+
+    void _onTap(int index) {
+      print('index = $index , currentIndex = $_currentIndex');
+      if (_currentIndex == index) {
+        return;
+      }
+      print('setState');
+      
+      setState(() {
+              _currentIndex = index;
+            });
+      _pageController.jumpToPage(index);
+      
+      // _pageController.animateToPage(index, duration: new Duration( seconds: 1), curve: Curves.ease);     
+    }
+
+    void _onPageChanged(int index) {
+      print("--->_onPageChanged $index");
+        setState(() {
+                  _currentIndex = index;
+                });
+    }
+
+  void _goStackDemo() {
+    Navigator.of(context).push(
+      new MaterialPageRoute(
+       builder: (context) => new StackDemoPage(),
+      )
+    );
+  }
+    void _onRaisedPressed() {
+
+    }
+    void onGoSecond() {
+      Navigator.of(context).push(
+        new MaterialPageRoute(
+          builder: (context) => new PageRouteSecondWidget(),
+        )
+      );
+    }
+}
