@@ -31,12 +31,13 @@ class _State extends State<NormalList> {
         padding: const EdgeInsets.all(20.0),
         children: widget.students.map( (Student student) {
             return new Row(
+              
               children: <Widget>[
-                new Icon(Icons.people, size: 60.0, color: Colors.blueGrey,),
+                new Icon(Icons.people, size: 60.0, color: Colors.blue,),
                 
                 new Padding(padding: EdgeInsets.only(left: 20),
                  child: new Column(children: <Widget>[
-                  new Text('${student.name}', style: new TextStyle(color: Colors.greenAccent, fontSize: 26, fontStyle: FontStyle.italic),),
+                  new Text('${student.name}', style: new TextStyle(color: Colors.green, fontSize: 26, fontStyle: FontStyle.italic),),
                   new Text('${student.age}', style: new TextStyle(color: Colors.pinkAccent, fontSize: 24, ),)
                   
                 ],

@@ -1,21 +1,56 @@
 PODS:
   - Flutter (1.0.0)
+  - flutter_webview_plugin (0.0.1):
+    - Flutter
   - fluttertoast (0.0.2):
     - Flutter
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
+  - path_provider (0.0.1):
+    - Flutter
+  - plugin_test (0.0.1):
+    - Flutter
+  - shared_preferences (0.0.1):
+    - Flutter
+  - sqflite (0.0.1):
+    - Flutter
+    - FMDB (~> 2.7.2)
 
 DEPENDENCIES:
   - Flutter (from `.symlinks/flutter/ios`)
+  - flutter_webview_plugin (from `.symlinks/plugins/flutter_webview_plugin/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - plugin_test (from `.symlinks/plugins/plugin_test/ios`)
+  - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
+  - sqflite (from `.symlinks/plugins/sqflite/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: .symlinks/flutter/ios
+  flutter_webview_plugin:
+    :path: .symlinks/plugins/flutter_webview_plugin/ios
   fluttertoast:
     :path: .symlinks/plugins/fluttertoast/ios
+  path_provider:
+    :path: .symlinks/plugins/path_provider/ios
+  plugin_test:
+    :path: .symlinks/plugins/plugin_test/ios
+  shared_preferences:
+    :path: .symlinks/plugins/shared_preferences/ios
+  sqflite:
+    :path: .symlinks/plugins/sqflite/ios
 
 SPEC CHECKSUMS:
   Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
+  flutter_webview_plugin: 0b491d31c34ab5c86a71c9f1a57ac000dd1b75e9
   fluttertoast: 0a20dcbbb8ecfd1a61b6285651ff2d5989d033fb
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  path_provider: 09407919825bfe3c2deae39453b7a5b44f467873
+  plugin_test: 284fe7665a2179955250acc1f4f1fc9845859157
+  shared_preferences: 5a1d487c427ee18fcd3ea1f2a131569481834b53
+  sqflite: 801b6b0983f722fa29baf00d1476e4556ada6de4
 
 PODFILE CHECKSUM: 1e5af4103afd21ca5ead147d7b81d06f494f51a2
 

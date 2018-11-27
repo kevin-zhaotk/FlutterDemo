@@ -3,13 +3,21 @@ import 'HomeTab.dart';
 import 'BottomNavigator.dart';
 import 'CupertinoNavigator.dart';
 import 'PageViewNavigator.dart';
+import 'package:fluro/fluro.dart';
+import 'router/Routers.dart';
 
-void main() => runApp(new MyApp());
+void main() {
+
+  final Router router = new Router();
+  Routers.configureRoutes(router);
+  runApp(new MyApp());
+} 
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return new MaterialApp(
       title: 'Flutter Demo',
       theme: new ThemeData(
@@ -28,6 +36,7 @@ class MyApp extends StatelessWidget {
       // home: new BottomNavigator(),
       // home: new CupertinoNavigator(),
       home: new PageViewNavigator(),
+      onGenerateRoute: Routers.router.generator,
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import 'navigate/PageRouteSecondWidget.dart';
@@ -6,6 +8,15 @@ import 'FirstLayer/WidgetsDemo.dart';
 import 'style/KZTextStyle.dart';
 import 'stack/StackDemoPage.dart';
 import 'list/ListViewDemo.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:plugin_test/plugin_test.dart';
+import 'scrollview/DemoCustomsrollview.dart';
+import 'webview/WebViewDemo.dart';
+import 'sqlite/SqliteDemo.dart';
+import 'http/HttpDemo1.dart';
+import 'sqlite/SharePreference.dart';
+import 'package:fluro/fluro.dart';
+import 'router/Routers.dart';
 
 class PageViewNavigator extends StatefulWidget {
 
@@ -46,7 +57,64 @@ class _PageViewNavigatorState extends State<PageViewNavigator> {
                             Navigator.of(context).push( new MaterialPageRoute(
                               builder: (BuildContext context) { return new ListViewDemo(); }
                             ));
-                          },)
+                          },),
+                      new FlatButton(child: new Text('pluginTest', style: KZTextStyle.normalBtn,), 
+                        onPressed: () {
+                          var version = PluginTest.platformVersion;
+                          version.then((String ver) {Fluttertoast.showToast( msg: ver);});
+                          
+                        },
+                      ),
+                      new FlatButton( child: new Text('DemoScrollView', style: KZTextStyle.normalBtn,), 
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            new MaterialPageRoute(builder: (context) { return new DemoCustomScrollView();}
+                          ));
+                            
+                        },
+                      ),
+
+                      new FlatButton(
+                        child: new Text('WebView', style: KZTextStyle.normalBtn,),
+                        onPressed: () {
+                          // Navigator.of(context).push(
+                          //   new MaterialPageRoute(builder: (context) {
+                          //     return new WebViewDemo(mUrl: 'https://www.baidu.com',);
+                          //   })
+                          // );
+                          var json = jsonEncode(Utf8Encoder().convert('https://www.baidu.com'));
+                          Routers.router.navigateTo(context, '${Routers.page2}?message=$json', transition: TransitionType.fadeIn);
+                        },
+                      ),
+                      // Database Demo
+                      new FlatButton(
+                        child: new Text('DataBase', style: KZTextStyle.normalBtn,),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            new MaterialPageRoute(
+                              builder: (context){ return new SqliteDemo();} )
+                          );
+                        },
+                      ),
+                      // Http Demo
+                      new FlatButton(
+                        
+                        child: new Text('Http Demo', style: KZTextStyle.normalBtn,),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            new MaterialPageRoute(builder: (context) {return new HttpDemo1();})
+                          );
+                        },
+                      ),
+                      // Storage Demo
+                      new FlatButton(
+                        child: new Text('Storage Demo', style: KZTextStyle.normalBtn,),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            new MaterialPageRoute(builder: (context) {return new SharePreference();})
+                          );
+                        },
+                      ),
                    ]
                  ),
                 );
