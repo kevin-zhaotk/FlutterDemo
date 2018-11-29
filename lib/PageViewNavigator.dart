@@ -9,7 +9,7 @@ import 'style/KZTextStyle.dart';
 import 'stack/StackDemoPage.dart';
 import 'list/ListViewDemo.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:plugin_test/plugin_test.dart';
+// import 'package:plugin_test/plugin_test.dart';
 import 'scrollview/DemoCustomsrollview.dart';
 import 'webview/WebViewDemo.dart';
 import 'sqlite/SqliteDemo.dart';
@@ -60,8 +60,8 @@ class _PageViewNavigatorState extends State<PageViewNavigator> {
                           },),
                       new FlatButton(child: new Text('pluginTest', style: KZTextStyle.normalBtn,), 
                         onPressed: () {
-                          var version = PluginTest.platformVersion;
-                          version.then((String ver) {Fluttertoast.showToast( msg: ver);});
+                          //var version = PluginTest.platformVersion;
+                          //version.then((String ver) {Fluttertoast.showToast( msg: ver);});
                           
                         },
                       ),

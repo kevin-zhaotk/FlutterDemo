@@ -8,11 +8,22 @@ class WebViewDemo extends StatefulWidget {
   final String mUrl;
   final int type;
 
-  WebViewDemo({this.mUrl = "www.baidu.com", this.type});
+  //WebViewDemo({this.mUrl = "www.baidu.com", this.type});
+
+  WebViewDemo(url, this.type) : mUrl = (type == 0 ? url : decodeUrl(url));
 
   @override
   State<StatefulWidget> createState() {
     return new _State();
+  }
+
+
+  static String decodeUrl(var url) {
+    List list = new List<int>();
+    jsonDecode(url).forEach(list.add);
+
+    String Url = Utf8Decoder().convert(list);
+    return Url;
   }
 }
 
@@ -26,9 +37,8 @@ class _State extends State<WebViewDemo> {
   @override
   void initState() {
 
-    url = decodeUrl();
     super.initState();
-    
+    url = widget.mUrl;
     webviewPlugin.onStateChanged.listen((WebViewStateChanged state) {
       print('--->stat: ${state.type}  url: ${state.url}');
     });
@@ -74,17 +84,6 @@ class _State extends State<WebViewDemo> {
       );
     }
 
-  String decodeUrl() {
-    String url;
-    List list = new List<int>();
-    if(widget.type != 0) {
-      jsonDecode(widget.mUrl).forEach(list.add);
-      url = Utf8Decoder().convert(list);
-    } else {
-      url = widget.mUrl;
-    }
-    return url;
-  }
   void loadUrl() {
     
     setState(() {

@@ -12,13 +12,13 @@ class Routers {
 
   static void configureRoutes(Router router) {
     router.define(
-        page1, handler: Handler(handlerFunc: (context, params) => WebViewDemo()));
+        page1, handler: Handler(handlerFunc: (context, params) => WebViewDemo("www.baidu.com", 1)));
     router.define(
         page2, handler: Handler(handlerFunc: (context, params) {
       var message = params['message']?.first;//取出传参
 
       
-      return WebViewDemo(mUrl: message, type: 1,);
+      return WebViewDemo(message, 1,);
     }));
     Routers.router = router;
   }
