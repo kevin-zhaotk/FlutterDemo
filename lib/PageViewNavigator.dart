@@ -17,6 +17,7 @@ import 'http/HttpDemo1.dart';
 import 'sqlite/SharePreference.dart';
 import 'package:fluro/fluro.dart';
 import 'router/Routers.dart';
+import 'player/PlayerDemo.dart';
 
 class PageViewNavigator extends StatefulWidget {
 
@@ -112,6 +113,15 @@ class _PageViewNavigatorState extends State<PageViewNavigator> {
                         onPressed: () {
                           Navigator.of(context).push(
                             new MaterialPageRoute(builder: (context) {return new SharePreference();})
+                          );
+                        },
+                      ),
+                      // Player Demo
+                      new FlatButton(
+                        child: new Text('Player Demo', style: KZTextStyle.normalBtn,),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            new MaterialPageRoute(builder: (context) {return new PlayerDemo();})
                           );
                         },
                       ),
