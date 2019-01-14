@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import '../style/KZTextStyle.dart';
 
+import 'dart:math' as math;
+
 class PlayerDemo extends StatefulWidget {
 
   @override
@@ -41,7 +43,6 @@ class _State extends State<PlayerDemo> {
   @override
   void dispose() {
     super.dispose();
-
   }
 
   @override

@@ -14,10 +14,14 @@ final int index;
       return new GestureDetector(
         onTap: () => showPreview(context, imgUrl),
         child: new Container(
-        color: Colors.white,
-        child: new Image.asset(imgUrl),
-
-      ),
+          decoration: new BoxDecoration(
+            color: Colors.white,
+            image: new DecorationImage(image: new AssetImage(imgUrl,), fit: BoxFit.fill),
+            borderRadius: BorderRadius.all(Radius.circular(50.0)),
+          ),
+        ),
+        // child: new CircleAvatar( backgroundImage: new AssetImage(imgUrl),),
+      
       );
     }
   

@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
 
 class DemoCustomScrollView extends StatelessWidget {
+
+  ScrollController _controller;
+
+  DemoCustomScrollView() {
+    _controller = new ScrollController();
+    _controller.addListener((){
+      
+      print("--->scroll ${new DateTime.now().toIso8601String()}\n");
+    });
+  }
+  
   @override
     Widget build(BuildContext context) {
       return CustomScrollView(
+        controller: _controller,
         slivers: <Widget>[
           const SliverAppBar(
             pinned: true,

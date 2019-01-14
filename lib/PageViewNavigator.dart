@@ -18,6 +18,10 @@ import 'sqlite/SharePreference.dart';
 import 'package:fluro/fluro.dart';
 import 'router/Routers.dart';
 import 'player/PlayerDemo.dart';
+import 'animation/AnimationDemo.dart';
+import 'animation/AnimatedList.dart';
+import 'animation/CustomAnimatedList.dart';
+import 'mvvm/MvvmView.dart';
 
 class PageViewNavigator extends StatefulWidget {
 
@@ -125,6 +129,23 @@ class _PageViewNavigatorState extends State<PageViewNavigator> {
                           );
                         },
                       ),
+                      new FlatButton(
+                        child:  new Text('Animation', style:KZTextStyle.normalBtn),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            // new MaterialPageRoute(builder: (context){return AnimationDemo();})
+                            new MaterialPageRoute(builder: (context){return CustomAnimatedList();})
+                          );
+                        },
+                      ),
+                      new FlatButton(
+                        child: new Text('MVVM', style: KZTextStyle.normalBtn,),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            new MaterialPageRoute(builder: (context){return MvvmView();})
+                          );
+                        },
+                      )
                    ]
                  ),
                 );
